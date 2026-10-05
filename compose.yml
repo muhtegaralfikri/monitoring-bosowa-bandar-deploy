@@ -1,0 +1,19 @@
+services:
+  api:
+    image: ghcr.io/muhtegaralfikri/monitoring-bosowa-bandar-api:latest
+    container_name: monitoring-bosowa-bandar-api
+    restart: unless-stopped
+    env_file:
+      - backend.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  web:
+    image: ghcr.io/muhtegaralfikri/monitoring-bosowa-bandar-web:latest
+    container_name: monitoring-bosowa-bandar-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "8093:80"
+
