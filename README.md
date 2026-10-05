@@ -24,3 +24,19 @@ Default login from app seeder:
 - `admin@example.com` / `password123`
 - `op@example.com` / `password123`
 
+
+Setelah deploy di server, jangan lupa wajib:
+
+```
+cd backend
+npm run db:migration:run
+npm run build
+pm2 restart backend-monitoring-bosowa-bandar
+```
+
+Dan frontend:
+
+```
+cd frontend
+npm run build
+```
