@@ -3,6 +3,7 @@ services:
     image: ghcr.io/muhtegaralfikri/monitoring-bosowa-bandar-api:latest
     container_name: monitoring-bosowa-bandar-api
     restart: unless-stopped
+    command: sh -lc "npm run db:migration:run && node dist/src/main.js"
     env_file:
       - backend.env
     extra_hosts:
@@ -16,4 +17,3 @@ services:
       - api
     ports:
       - "8093:80"
-
